@@ -15,7 +15,7 @@ const Signup = () => {
   }
   const submit =async (e) => {
     e.preventDefault();
-    await axios.post(`http://localhost:3000/api/v1/register`,input).then((response)=>{
+    await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/v1/register`,input).then((response)=>{
       alert(response.data.message)
       setinput({
         email: "",

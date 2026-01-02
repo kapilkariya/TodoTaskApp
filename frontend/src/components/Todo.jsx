@@ -16,21 +16,21 @@ const Todo = () => {
   }
   useEffect(()=>{
     const fetch=async()=>{
-      await axios.get(`http://localhost:3000/api/v2/gettask/${id}`  ).then((response)=>{setarray(response.data.list)})
+      await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/v2/gettask/${id}`  ).then((response)=>{setarray(response.data.list)})
     }
     fetch()
   },[])
   
   const submit=async()=>{
     if(id){
-      await axios.post(`http://localhost:3000/api/v2/addtask`,{title:input.title,body:input.body,id:id}).then((response)=>console.log(response))
+      await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/v2/addtask`,{title:input.title,body:input.body,id:id}).then((response)=>console.log(response))
       setinput({title:"",body:""})
       seta(true)
     }
   }
   const del=async(id)=>{
     if(id){
-      await axios.delete(`http://localhost:3000/api/v2/deletetask/${id}`,{data:{id:user.id}})
+      await axios.delete(`${import.meta.env.VITE_BACKEND_URL}/api/v2/deletetask/${id}`,{data:{id:user.id}})
     }
     setarray(prev => prev.filter(item => item._id !== id));
   }

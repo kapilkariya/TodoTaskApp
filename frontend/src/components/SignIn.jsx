@@ -14,7 +14,7 @@ const SignIn = () => {
   }
   const submit =async (e) => {
     e.preventDefault();
-    await axios.post(`http://localhost:3000/api/v1/signin`,input).then((response)=>{
+    await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/v1/signin`,input).then((response)=>{
       localStorage.setItem("token",response.data.token);
       console.log(response.data.user)
       localStorage.setItem("user",JSON.stringify(response.data.user))
